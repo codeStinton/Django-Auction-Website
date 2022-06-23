@@ -1,0 +1,43 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+<style>
+
+.posts {
+    width: 30%;;
+    margin: 1%;
+    display: inline-block;
+
+}
+
+p {
+    text-align: center;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+ }
+
+
+</style>
+
+
+
+    <h2>All Listings</h2>
+
+    {% for list in listing %}
+    
+
+        <a href="{% url 'listing' list.id %}"><div class = 'posts'>
+            <p> {{list.title}} </p>
+            <p> {{list.description}} </p>
+            <p> £{{list.price}} </p>
+            <img src = {{list.image}} style='height: 100%; width: 100%; object-fit: contain'/>
+            <p> Posted: {{list.create_date}} </p>
+        </div>
+
+    {% endfor %}
+
+{% endblock %}
